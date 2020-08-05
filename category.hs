@@ -43,5 +43,15 @@
 
 --Let us say that for a directed graph G = {V , E}, and for v_1, v_2 in G, that v_1 v_2 are edge related e, and let us write v_1 e v_2, if there exists (v_1, v_2) in E. It is sufficient for the edge relation to be reflexive and transitive. If it is reflexive then for every v in V vev, i.e. (v, v) isin E, but that just represents the identity morphism. If it is transitive then we have v_1ev_2, v_2ev_3 => v_1ev_3, i.e. we have that diagrams commute, as required. Associativity also follows from transitivity of edge relation, as (f_AB . f_BC) . f_CD = f_AC . f_CD = f_AD = f_AB . (f_BD) = f_AB . (f_BC . f_BD). 
 
+--2. Types and Functions
 
+--2.1 Who Needs Types?
+--2.2 Types Are About Composability 
+--2.3 What are Types?
+--2.4 Why do We Need a Mathematical Model?
+--2.5 Pure and Dirty Functions
+--2.6 Examples of Types
+--2.7 Challenges
+
+--1.
 
