@@ -1,0 +1,38 @@
+\documentclass[12pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{tikz-cd}
+\newcommand{\mcC}{\mathcal{C}}
+\newcommand{\mcD}{\mathcal{D}}
+\newcommand{\mor}{\text{mor}}
+\newtheorem{thm}{Theorem}[chapter]
+\newtheorem{defn}[thm]{Definition} %arguments encased in square brackets define counters. Here thm is counted according to chapter, and defn is counted according to theorem.
+
+
+\begin{document}
+\chapter{Functors}
+\begin{defn}
+  Two functors $F: \mcC \to \mcD, G: \mcD \to \mcC$ are adjoint if for any object $A$ of category $\mcC$ and $B$ of category $\mcD$,
+  $\hom_{\mcC}(A,G-)$ is naturally isomorphic to $\hom_{\mcD}(FA,-)$ and $\hom_{\mcC}(-,GB)$ is naturally isomorphic to  $\hom_{\mcD}(F-,B)$.
+  That is for any morphisms $f:C \to D$ of category $\mcC$ and $g: \widetilde{D} \to \widetilde{C}$ of category $\mcD$ there exist natural transformations $\eta$, $\mu$ such that the following diagrams
+  \begin{center}
+  \begin{tikzcd}
+    \hom_{\mcC}(C, GB) \arrow[d, "{\hom_{\mcC}(-, GB)}"] \arrow[r, "{\eta_C}"]
+    & \hom_{\mcD}(FC, B) \arrow[d, "{\hom_{\mcC}(F-, B)}"] \\
+    \hom_{\mcC}(D, GB) \arrow[r, "{\eta_D}"]
+    & \hom_{\mcD}(FD, B) 
+  \end{tikzcd}
+  \end{center}
+  \begin{center}
+\begin{tikzcd}
+    \hom_{\mcC}(A, G\widetilde{D}) \arrow[d, "{\hom_{\mcC}(A, G-)}"] \arrow[r, "{\mu_{\widetilde{D}}}"]
+    & \hom_{\mcD}(FA, \widetilde{D}) \arrow[d, "{\hom_{\mcC}(FA, -)}"] \\
+    \hom_{\mcC}(A, G\widetilde{C}) \arrow[r, "{\mu_{\widetilde{C}}}"]
+    & \hom_{\mcD}(FA, \widetilde{C}) 
+  \end{tikzcd}
+\end{center}
+  commute, and each of the components of $\eta$ and $\mu$ are isomorphisms, i.e. $\eta_C$, $\eta_D$, $\mu_{\widetilde{D}}$, $\mu_{\widetilde{C}}$ are isomorphisms.
+
+\end{defn}
+
+\end{document}
