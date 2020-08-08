@@ -1,16 +1,70 @@
-\documentclass[12pt]{report}
+\documentclass[11pt]{report}
 \usepackage[utf8]{inputenc}
 \usepackage{mathtools}
 \usepackage{tikz-cd}
+\usepackage{bbm}
 \newcommand{\mcC}{\mathcal{C}}
 \newcommand{\mcD}{\mathcal{D}}
 \newcommand{\mor}{\text{mor}}
+\newcommand{\ob}{\text{ob}}
 \newtheorem{thm}{Theorem}[chapter]
 \newtheorem{defn}[thm]{Definition} %arguments encased in square brackets define counters. Here thm is counted according to chapter, and defn is counted according to theorem.
 
 
 \begin{document}
-\chapter{Functors}
+\chapter{Categories}
+\begin{defn}
+  A category $\mcC$ is given by the following information $(\ob(\mcC), \hom(\mcC), \circ)$, where
+  \begin{itemize}
+  \item (Objects) $\ob(\mcC)$ denotes the class of objects. \\
+  \item (Morphisms) $\hom(\mcC)$ denotes the class of morphisms, of the form $f:A \to B$, where $A, B \in ob(\mcC)$. \\
+  \item (Composition) $\circ$ denotes the binary operation of composition, which satisfies:
+    \begin{itemize}
+    \item (Closed) For any $f: A \to B, g:B \to C \in \hom(C)$, $g \circ f: A \to C$. \\
+    \item (Associativity) Let $f,g$ be as above, and $h:C->D$ be another morphism, then $h \circ (g \circ f) = (h \circ g) \circ f$. \\
+    \item (Identity) For every object $X \in \ob(\mcC)$ there exists an identity morphism $\mathbbm{1}_X:X \to X$ satisfying
+      $\mathbbm{1}_B \circ f = f \circ \mathbbm{1}_A$.
+    \end{itemize}
+  \end{itemize}
+\end{defn}
+
+\begin{defn}
+  Let $\mcC$ and $\mcD$ be categories. A (covariant) functor $F: \mcC \to \mcD$ is a mapping satisfying
+  \begin{itemize}
+  \item For all objects $A \in \ob(\mcC)$ there exists a unique object $FA \in \ob(\mcD)$.
+  \item For all morphisms $f:A \to B$ of $\mcC$ a unique morphism $Ff:FA \to FB$ of $\mcD$, such that:
+    \begin{itemize}
+    \item $F\mathbbm{1}_A = \mathbbm{1}_{FA}$, for all objects $A$ of $\mcC$. \\
+    \item $F(g \circ f) = Fg \circ Ff$, for all morphisms $g: B \to C$ of $\mcC$.
+    \end{itemize}
+  \end{itemize}
+  The definition for a contravariant functor is identical except that if $f:A \to B$ in $\mcC$ then $Ff: FB \to FA$ in $\mcD$, so that the composition requirement is
+  \begin{center}
+  $F(g \circ f) = Ff \circ Fg$, for $g: B \to C$.
+    \end{center}
+\end{defn}
+
+\begin{defn}
+  Let $F: \mcC \to \mcD$ and $G: \mcD \to \mcC$ be functors, then a natural transformation $\eta: F \to G$ is a collection of morphisms satisfying
+  \begin{itemize}
+    \item For all objects $A$ of $\mcC$ we get a morphism $\eta_A: FA \to GA$ of objects in $\mcD$, and we call $\eta_A$ the component of $\eta$ at $A$. \\
+    \item Components satisfy $\eta_B \circ Ff = Gf \circ \eta_A$, for all morphisms $f: A \to B$ in $\mcC$,
+      i.e. the following diagram commutes:
+      \begin{center}
+        \begin{tikzcd}
+          FA \arrow[d, "{Ff}"] \arrow[r, "{\eta_A}"] & GA \arrow[d, "{Gf}"] \\
+          FB \arrow[r, "{\eta_B}"] & GB
+        \end{tikzcd}
+      \end{center}
+
+  \end{itemize}
+\end{defn}
+
+\begin{defn}
+Let $F: \mcC \to \mcD$ and $G: \mcD \to \mcC$ be functors, then a natural transformation $\eta: F \to G$ is a natural isomorphism if all of the components $\eta_A:FA \to GA$ are isomorphisms, for $A$ an object of $\mcC$.
+\end{defn}
+
+
 \begin{defn}
   Two functors $F: \mcC \to \mcD, G: \mcD \to \mcC$ are adjoint if for any object $A$ of category $\mcC$ and $B$ of category $\mcD$,
   $\hom_{\mcC}(A,G-)$ is naturally isomorphic to $\hom_{\mcD}(FA,-)$ and $\hom_{\mcC}(-,GB)$ is naturally isomorphic to  $\hom_{\mcD}(F-,B)$.
