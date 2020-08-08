@@ -29,19 +29,29 @@
 \end{defn}
 
 \begin{defn}
-  Let $\mcC$ and $\mcD$ be categories. A (covariant) functor $F: \mcC \to \mcD$ is a mapping satisfying
-  \begin{itemize}
+  Let $\mcC$ and $\mcD$ be categories. A covariant functor $F: \mcC \to \mcD$ is a mapping satisfying
+  \begin{enumerate}
   \item For all objects $A \in \ob(\mcC)$ there exists a unique object $FA \in \ob(\mcD)$.
   \item For all morphisms $f:A \to B$ of $\mcC$ a unique morphism $Ff:FA \to FB$ of $\mcD$, such that:
-    \begin{itemize}
+    \begin{enumerate}
     \item $F\mathbbm{1}_A = \mathbbm{1}_{FA}$, for all objects $A$ of $\mcC$. \\
     \item $F(g \circ f) = Fg \circ Ff$, for all morphisms $g: B \to C$ of $\mcC$.
-    \end{itemize}
+    \end{enumerate}
+  \end{enumerate}
+\end{defn}
+\begin{defn}
+  A contravariant functor $F: \mcC \to \mcD$ satisfies the definition of a covariant functor, except change 2. in Definition 1.2 to
+  \begin{itemize}
+    \item For all morphisms $f:A \to B$ of $\mcC$ a unique morphism $Ff:FB \to FA$ of $\mcD$,
   \end{itemize}
-  The definition for a contravariant functor is identical except that if $f:A \to B$ in $\mcC$ then $Ff: FB \to FA$ in $\mcD$, so that the composition requirement is
-  \begin{center}
-  $F(g \circ f) = Ff \circ Fg$, for $g: B \to C$.
-    \end{center}
+  and change 2.b to
+  \begin{itemize}
+    \item $F(g \circ f) = Ff \circ Fg$, for all morphisms $g: B \to C$ of $\mcC$.
+  \end{itemize}
+\end{defn}
+
+\begin{defn}
+  An endofunctor is a functor that maps a category to itself. 
 \end{defn}
 
 \begin{defn}
@@ -86,7 +96,31 @@ Let $F: \mcC \to \mcD$ and $G: \mcD \to \mcC$ be functors, then a natural transf
   \end{tikzcd}
 \end{center}
   commute, and each of the components of $\eta$ and $\mu$ are isomorphisms, i.e. $\eta_C$, $\eta_D$, $\mu_{\widetilde{D}}$, $\mu_{\widetilde{C}}$ are isomorphisms.
+\end{defn}
+\begin{defn}
+  A coherence condition is a collection of conditions requiring that various compositions of elementary morphisms are equal. 
+\end{defn}
+\begin{defn}
+  Let $\mcC$ be a category. A monad on $\mcC$ is given by an endofunctor $T: \mcC \to \mcC$ together with natural transformations $\eta: \mathbbm{1}_\mcC \to T$ (where $\mathbbm{1}_\mcC$ denotes the identity functor on $\mcC$ and
+  $\mu: T^2 \to T$ (where $T^2$ is the functor $T \circ T$ from $\mcC$ to $\mcC$). These are required to fulfill the following coherence conditions:
+  \begin{itemize}
+  \item $\mu \circ T \mu = \mu \circ \mu T$ (as natural transformations $T^3 \to T$), i.e. for all objects $A$ of $\mcC$ the following diagram commutes,
+    \begin{center}
+      \begin{tikzcd}
+        T(T(T(A))) \arrow[d, "{\mu_{T(A)}}"] \arrow[r,"{T(\mu_A)}"] & T(T(A)) \arrow[d, "{\mu_A}"] \\
+        T(T(A)) \arrow[r, "{\mu_A}"] & T(A)
+      \end{tikzcd}
+    \end{center} 
+  \item $\mu \circ T \eta = \mu \circ \eta T = \mathbbm{1}_T $ (as natural transformations  $T \to T$, where $\mathbbm{1}_T$ denotes the identity transformation from $T$ to $T$), i.e.
+    the following diagram commutes, for all objects $A$ of $\mcC$:
+    \begin{center}
+      \begin{tikzcd}
+        T(A) \arrow[d, "{T(\eta_A)}"] \arrow[r,"{\eta_{T(A)}}"] & T(T(A)) \arrow[d, "{\mu_A}"] \\
+        T(T(A)) \arrow[r, "{\mu_A}"] & T(A)
+      \end{tikzcd}
+    \end{center} 
 
+  \end{itemize}
 \end{defn}
 
 \end{document}
