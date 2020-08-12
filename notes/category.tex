@@ -15,11 +15,11 @@
 \begin{document}
 \chapter{Categories}
 \begin{defn}
-  A category $\mcC$ is given by the following information $(\ob(\mcC), \hom(\mcC), \circ)$, where
+  A \textbf{category} $\mcC$ is given by the following information $(\ob(\mcC), \hom(\mcC), \circ)$, where
   \begin{itemize}
-  \item (Objects) $\ob(\mcC)$ denotes the class of objects. \\
-  \item (Morphisms) $\hom(\mcC)$ denotes the class of morphisms, of the form $f:A \to B$, where $A, B \in ob(\mcC)$. \\
-  \item (Composition) $\circ$ denotes the binary operation of composition, which satisfies:
+  \item (Objects) $\ob(\mcC)$ denotes the class of \textbf{objects}. \\
+  \item (Morphisms) $\hom(\mcC)$ denotes the class of \textbf{morphisms}, of the form $f:A \to B$, where $A, B \in ob(\mcC)$. \\
+  \item (Composition) $\circ$ denotes the binary operation of \textbf{composition}, which satisfies:
     \begin{itemize}
     \item (Closed) For any $f: A \to B, g:B \to C \in \hom(C)$, $g \circ f: A \to C$. \\
     \item (Associativity) Let $f,g$ be as above, and $h:C \to D$ be another morphism, then $h \circ (g \circ f) = (h \circ g) \circ f$. \\
@@ -30,7 +30,7 @@
 \end{defn}
 
 \begin{defn}
-  Let $\mcC$ and $\mcD$ be categories. A covariant functor $F: \mcC \to \mcD$ is a mapping satisfying
+  Let $\mcC$ and $\mcD$ be categories. A \textbf{covariant functor } $F: \mcC \to \mcD$ is a mapping satisfying
   \begin{enumerate}
   \item For all objects $A \in \ob(\mcC)$ there exists a unique object $FA \in \ob(\mcD)$.
   \item For all morphisms $f:A \to B$ of $\mcC$ a unique morphism $Ff:FA \to FB$ of $\mcD$, such that:
@@ -41,7 +41,7 @@
   \end{enumerate}
 \end{defn}
 \begin{defn}
-  A contravariant functor $F: \mcC \to \mcD$ satisfies the definition of a covariant functor, except change 2. in Definition 1.2 to
+  A \textbf{contravariant functor} $F: \mcC \to \mcD$ satisfies the definition of a covariant functor, except change 2. in Definition 1.2 to
   \begin{itemize}
     \item For all morphisms $f:A \to B$ of $\mcC$ a unique morphism $Ff:FB \to FA$ of $\mcD$,
   \end{itemize}
@@ -52,13 +52,13 @@
 \end{defn}
 
 \begin{defn}
-  An endofunctor is a functor that maps a category to itself. 
+  An \textbf{endofunctor} is a functor that maps a category to itself. 
 \end{defn}
 
 \begin{defn}
-  Let $F: \mcC \to \mcD$ and $G: \mcD \to \mcC$ be functors, then a natural transformation $\eta: F \to G$ is a collection of morphisms satisfying
+  Let $F: \mcC \to \mcD$ and $G: \mcD \to \mcC$ be functors, then a \textbf{natural transformation} $\eta: F \to G$ is a collection of morphisms satisfying
   \begin{itemize}
-    \item For all objects $A$ of $\mcC$ we get a morphism $\eta_A: FA \to GA$ of objects in $\mcD$, and we call $\eta_A$ the component of $\eta$ at $A$. \\
+    \item For all objects $A$ of $\mcC$ we get a morphism $\eta_A: FA \to GA$ of objects in $\mcD$, and we call $\eta_A$ the \textbf{component }of $\eta$ at $A$. \\
     \item Components satisfy $\eta_B \circ Ff = Gf \circ \eta_A$, for all morphisms $f: A \to B$ in $\mcC$,
       i.e. the following diagram commutes:
       \begin{center}
@@ -72,18 +72,18 @@
 \end{defn}
 
 \begin{defn}
-Let $F: \mcC \to \mcD$ and $G: \mcD \to \mcC$ be functors, then a natural transformation $\eta: F \to G$ is a natural isomorphism if all of the components $\eta_A:FA \to GA$ are isomorphisms, for $A$ an object of $\mcC$.
+Let $F: \mcC \to \mcD$ and $G: \mcD \to \mcC$ be functors, then a natural transformation $\eta: F \to G$ is a \textbf{natural isomorphism} if all of the components $\eta_A:FA \to GA$ are isomorphisms, for $A$ an object of $\mcC$.
 \end{defn}
 
 
 \begin{defn}
-  Two functors $F: \mcC \to \mcD, G: \mcD \to \mcC$ are adjoint if for any object $A$ of category $\mcC$ and $B$ of category $\mcD$,
+  Two functors $F: \mcC \to \mcD, G: \mcD \to \mcC$ are \textbf{adjoint }if for any object $A$ of category $\mcC$ and $B$ of category $\mcD$,
   $\hom_{\mcC}(A,G-)$ is naturally isomorphic to $\hom_{\mcD}(FA,-)$ and $\hom_{\mcC}(-,GB)$ is naturally isomorphic to  $\hom_{\mcD}(F-,B)$.
   That is for any morphisms $f:C \to D$ of category $\mcC$ and $g: \widetilde{D} \to \widetilde{C}$ of category $\mcD$ there exist natural transformations $\eta$, $\mu$ such that the following diagrams
   \begin{center}
   \begin{tikzcd}
     \hom_{\mcC}(C, GB) \arrow[d, "{\hom_{\mcC}(-, GB)}"] \arrow[r, "{\eta_C}"]
-    & \hom_{\mcD}(FC, B) \arrow[d, "{\hom_{\mcC}(F-, B)}"] \\
+    & \hom_{\mcD}(FC, B) \arrow[d, "{\hom_{\mcD}(F-, B)}"] \\
     \hom_{\mcC}(D, GB) \arrow[r, "{\eta_D}"]
     & \hom_{\mcD}(FD, B) 
   \end{tikzcd}
@@ -91,7 +91,7 @@ Let $F: \mcC \to \mcD$ and $G: \mcD \to \mcC$ be functors, then a natural transf
   \begin{center}
 \begin{tikzcd}
     \hom_{\mcC}(A, G\widetilde{D}) \arrow[d, "{\hom_{\mcC}(A, G-)}"] \arrow[r, "{\mu_{\widetilde{D}}}"]
-    & \hom_{\mcD}(FA, \widetilde{D}) \arrow[d, "{\hom_{\mcC}(FA, -)}"] \\
+    & \hom_{\mcD}(FA, \widetilde{D}) \arrow[d, "{\hom_{\mcD}(FA, -)}"] \\
     \hom_{\mcC}(A, G\widetilde{C}) \arrow[r, "{\mu_{\widetilde{C}}}"]
     & \hom_{\mcD}(FA, \widetilde{C}) 
   \end{tikzcd}
@@ -99,13 +99,19 @@ Let $F: \mcC \to \mcD$ and $G: \mcD \to \mcC$ be functors, then a natural transf
   commute, and each of the components of $\eta$ and $\mu$ are isomorphisms, i.e. $\eta_C$, $\eta_D$, $\mu_{\widetilde{D}}$, $\mu_{\widetilde{C}}$ are isomorphisms. In this case, we say $F$ is a left adjoint of $G$ and $G$ is a right adjoint of $F$.
 \end{defn}
 \begin{defn}
-  A coherence condition is a collection of conditions requiring that various compositions of elementary morphisms are equal. 
+  \textbf{Coherence conditions} are a collection of conditions requiring that various compositions of elementary morphisms are equal. 
 \end{defn}
 \begin{defn}
-  Let $\mcC$ be a category. A monad on $\mcC$ is given by an endofunctor $T: \mcC \to \mcC$ together with natural transformations $\eta: \mathbbm{1}_\mcC \to T$ (where $\mathbbm{1}_\mcC$ denotes the identity functor on $\mcC$ and
+  Let $\mcC$ be a category. A \textbf{monad }on $\mcC$ is given by an endofunctor $T: \mcC \to \mcC$ together with natural transformations $\eta: \mathbbm{1}_\mcC \to T$ (where $\mathbbm{1}_\mcC$ denotes the identity functor on $\mcC$ and
   $\mu: T^2 \to T$ (where $T^2$ is the functor $T \circ T$ from $\mcC$ to $\mcC$). These are required to fulfill the following coherence conditions:
   \begin{itemize}
   \item $\mu \circ T \mu = \mu \circ \mu T$ (as natural transformations $T^3 \to T$), i.e. for all objects $A$ of $\mcC$ the following diagram commutes,
+    \begin{center}
+      \begin{tikzcd}
+        T^3 \arrow[d, "{\mu T}"] \arrow[r,"{T \mu}"] & T^2 \arrow[d, "{\mu}"] \\
+        T^2 \arrow[r, "{\mu}"] & T
+      \end{tikzcd}
+    \end{center} 
     \begin{center}
       \begin{tikzcd}
         T(T(T(A))) \arrow[d, "{\mu_{T(A)}}"] \arrow[r,"{T(\mu_A)}"] & T(T(A)) \arrow[d, "{\mu_A}"] \\
@@ -116,11 +122,31 @@ Let $F: \mcC \to \mcD$ and $G: \mcD \to \mcC$ be functors, then a natural transf
     the following diagram commutes, for all objects $A$ of $\mcC$:
     \begin{center}
       \begin{tikzcd}
+        T \arrow[d, "{T \eta}"] \arrow[r,"{\eta T}"] & T^2 \arrow[d, "{\mu}"] \\
+        T^2 \arrow[r, "{\mu}"] & T
+      \end{tikzcd}
+    \end{center} 
+    \begin{center}
+      \begin{tikzcd}
         T(A) \arrow[d, "{T(\eta_A)}"] \arrow[r,"{\eta_{T(A)}}"] & T(T(A)) \arrow[d, "{\mu_A}"] \\
         T(T(A)) \arrow[r, "{\mu_A}"] & T(A)
       \end{tikzcd}
     \end{center} 
+
   \end{itemize}
+\end{defn}
+
+\begin{defn}
+  Let $\langle T, \eta, \mu \rangle$ be a monad over a category $\mcC$. The \textbf{Kleisli Category }of $\mcC$ is the category $\mcC_T$ whose objects and morphisms are given by:
+  \begin{itemize}
+  \item $\ob(\mcC_T) = \ob(\mcC)$,
+  \item $\hom_{\mcC_T}(X, Y) = \hom_{\mcC}(X, TY)$.
+  \end{itemize}
+  where for $f: X \to TY$ and $g: Y \to TZ$, composition of morphisms is given by:
+  \begin{center}
+    $g \circ_T f = \mu_Z \circ Tg \circ f: X \to TY \to T^2Z \to TZ$
+  \end{center}
+  and the identity is satisfied by the monad unit $\eta$, i.e. $id_X = \eta_X$.
 \end{defn}
 
 \begin{defn}
