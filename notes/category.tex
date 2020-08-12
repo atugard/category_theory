@@ -30,6 +30,28 @@
 \end{defn}
 
 \begin{defn}
+  Let $\mcC$ be a category. The \textbf{dual} category, or \textbf{opposite} category $\mcC^{op}$ is given by:
+  \begin{itemize}
+  \item $\ob(\mcC) = \ob(\mcC^{op})$.
+  \item $\hom_{\mcC^{op}}(X, Y) = \hom_{\mcC}(Y, X)$, for every $X, Y \in \ob(\mcC)$.
+  \item $g \circ_{op} f = (f^{op} \circ g^{op})^{op}$, for $f: A \to B$, $g: B \to C$ in $\mcC^{op}$.
+  \end{itemize}
+  \begin{center}
+    .
+  \end{center}
+
+\end{defn}
+
+\begin{defn}
+  An \textbf{initial object} of a category $\mcC$ is an object $I \in \ob(\mcC)$ such that for every object $X \in \ob(\mcC)$ there exists exactly one morphism $I \to X$.
+\end{defn}
+
+\begin{defn}
+  A \textbf{terminal object} of a category $\mcC$ is an object $J \in \ob(\mcC)$ such that for every object $X \in \ob(\mcC)$ there exists precisely one morphism $X \to J$.
+  It is the dual notion of an initial object. That is, if $I$ is an initial object in $\mcC$ then $J$ is a terminal object in $\mcC^{op}$.
+\end{defn}
+
+\begin{defn}
   Let $\mcC$ and $\mcD$ be categories. A \textbf{covariant functor } $F: \mcC \to \mcD$ is a mapping satisfying
   \begin{enumerate}
   \item For all objects $A \in \ob(\mcC)$ there exists a unique object $FA \in \ob(\mcD)$.
@@ -54,6 +76,49 @@
 \begin{defn}
   An \textbf{endofunctor} is a functor that maps a category to itself. 
 \end{defn}
+
+
+\begin{defn}
+  Let $F: \mcC \to \mcD$ be a functor. Let $X \in \ob(\mcD)$ and $A \in \ob(\mcC).$ A \textbf{universal morphism} from $X$ to $F$ is a unique pair
+  $(A, u: X \to FA)$ in $\mcD$ which satisfies the following property, called a \textbf{universal property}.
+  For any morphism of the form $f: X \to FA'$ in $\mcD$, there exists a unique morphism $h: A \to A'$ such that the following diagram commutes:
+  \begin{center}
+    \begin{tikzcd}
+      X \arrow[r, "{u}"] \arrow[rd, swap, "{f}"] & FA \arrow[d, "{Fh}"] \\
+      & FA' 
+    \end{tikzcd}
+  \end{center}
+\end{defn}
+
+\begin{defn}
+  Let $\mcC$ be a category with some objects $X$ and $Y$. A \textbf{product} of $X$ and $Y$ is an object $X \times Y$ together with a pair of morphisms
+  $\pi_X: X \times Y\to X$, $\pi_Y: X \times Y\to Y$ that satisfy the following universal property:
+  \begin{itemize}
+  \item For every object $Z$ and a pair of morphisms $f: Z \to X$, $g: Z \to Y$ there exists a unique morphism $h: Z \to X \times Y$ such that
+    the following diagram commutes:
+    \begin{center}
+      \begin{tikzcd}
+        & Z \arrow[dl, swap, "{f}"] \arrow[d, "{h}"] \arrow[dr, "{g}"] & \\
+        X & X \times Y \arrow[l,  "{\pi_X}"]  \arrow[r, swap,  "{\pi_Y}"] & Y
+      \end{tikzcd}
+    \end{center}
+  \end{itemize}
+\end{defn}
+
+\begin{defn}
+  Let $\mcC$ be a category with some objects $X$ and $Y$. A \textbf{coproduct} or \textbf{sum} of $X$ and $Y$ is an object $X \sqcup Y$ or $X \oplus Y$ or $X + Y$
+  together with morphisms $i _X: X \to X \times Y$, $i_Y: Y \to X \times Y$ that satisfy the following universal property:
+  \begin{itemize}
+    \item For any object $Z$ and morphisms $f: X \to Z$, $g: Y \to Z$, there exists a unique morphism $h: X \sqcup Y \to Z$ such that the following diagram commutes.
+    \begin{center}
+      \begin{tikzcd}
+        & Z & \\
+        X \arrow[ur, "{f}"] \arrow[r, swap, "{i_1}"] & X \sqcup Y \arrow[u, swap, "{h}"] & Y \arrow[ul, swap, "{g}"] \arrow[l, "{i_2}"]
+      \end{tikzcd}
+    \end{center}
+  \end{itemize}
+\end{defn}
+
 
 \begin{defn}
   Let $F: \mcC \to \mcD$ and $G: \mcD \to \mcC$ be functors, then a \textbf{natural transformation} $\eta: F \to G$ is a collection of morphisms satisfying
