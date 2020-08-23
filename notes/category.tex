@@ -79,15 +79,24 @@
 
 
 \begin{defn}
-  Let $F: \mcC \to \mcD$ be a functor. Let $X \in \ob(\mcD)$ and $A \in \ob(\mcC).$ A \textbf{universal morphism} from $X$ to $F$ is a unique pair
+  Let $F: \mcC \to \mcD$ be a functor. Let $X \in \ob(\mcD)$ and $A \in \ob(\mcC).$ A \textbf{universal morphism from $X$ to $F$} is a unique pair
   $(A, u: X \to FA)$ in $\mcD$ which satisfies the following property, called a \textbf{universal property}.
   For any morphism of the form $f: X \to FA'$ in $\mcD$, there exists a unique morphism $h: A \to A'$ such that the following diagram commutes:
   \begin{center}
     \begin{tikzcd}
-      X \arrow[r, "{u}"] \arrow[rd, swap, "{f}"] & FA \arrow[d, "{Fh}"] \\
-      & FA' 
+      X \arrow[r, "{u}"] \arrow[rd, swap, "{f}"] & FA \arrow[d, "{Fh}"] & A \arrow[d, dotted, "{h}"] \\
+      & FA' & A'
     \end{tikzcd}
   \end{center}
+  We dualize the concept as follows. A \textbf{universal morphism from $F$ to $X$} is a unique pair $(A, u: FA \to X)$ that satisfies the following universal property. For any morphism of the form
+  $f : FA' \to X$ in $\mcD$, there exists a unique morphism $h: A' \to A$ such that the following diagram commutes:
+  \begin{center}
+    \begin{tikzcd}
+      X & FA \arrow[l, swap, "{u}"] & A\\
+      & FA' \arrow[lu, "{f}"] \arrow[u, swap, "{Fh}"] & A' \arrow[u, dotted, "{h}"]
+    \end{tikzcd}
+  \end{center}
+
 \end{defn}
 
 \begin{defn}
