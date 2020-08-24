@@ -1,3 +1,4 @@
+{-# LANGUAGE DeriveFunctor #-}
 --------------------------------------------------------------------
 ----------------------------Partial----------------------------
 
@@ -150,7 +151,6 @@ instance Bifunctor Main.Either where --coproduct
     bimap _ g (Main.Right y) = Main.Right (g y)
 
 newtype BiComp bf fu gu a b = BiComp (bf (fu a) (gu b)) --we lift bf . (fu, gu) by first lifting a by fu, b by gu, and then (fu a), (gu b) by bf.
-
 instance (Bifunctor bf, Functor fu, Functor gu) =>
     Bifunctor (BiComp bf fu gu) where
         bimap f1 f2 (BiComp x) = BiComp ((bimap (fmap f1) (fmap f2)) x)

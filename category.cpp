@@ -161,14 +161,46 @@ struct Const{
 
 //cpp implementation of fmap for Const c a
 template<class C, class A, class B>
-Const<C, B> fmap(function<B(A)> f, Const<C, A> c) {
+Const<C, B>
+fmap(function<B(A)> f, Const<C, A> c) {
   return Const<C,B>{c._v};
 }
+
+//Reader functor
+//Next we consider something of the form \hom(a,-), which we can define by giving the binary operator -> one argument,
+//hom a = r -> a
+//In this case we have
+//fmap :: (a -> b) -> (r -> a) -> (r -> b)
+//Which can be implemented as follows, g: r->a, f: a->b =>
+//instance Functor ((->) r) where
+//    fmap f g = f . g
+//We could also just write
+//instance Functor ((->) r) where
+//    fmap = (.)
+template<class R, class A>
+struct reader{
+  reader(A a){
+    function<A(R)> f(R r){ //if you give me a value of type a, i'll make a constant function that always returns that value.
+      return a;
+    }
+  }
+  reader(function<A(R)> f): _f(f){ //if you give me an implemented function, I'll save it.
+  }
+
+ function<A(R)> _f;
+};
+
+template<class R, class A, class B>
+function<B(R)>
+fmap(function<B(A)> f, function<A(R)> g){
+  function<B(R)> fg(R r){
+    return f(g(r));
+  };
+  return fg;
+}
+
+
+
 int main(){
-  vector<int> v{ 1, 2, 3, 4 };
-  auto w = fmap([](int i) { //lambda function
-    return i * i;
-  }, v);
-  copy(begin(w), end(w), ostream_iterator(cout, ", ")); //print result
-    
+  function<int(bool)> reader(5);
 };

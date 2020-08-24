@@ -22,3 +22,20 @@
 
 
         
+;;Reader functor
+;;Next we consider something of the form \hom(a,-), which we can define by giving the binary operator -> one argument,
+;;hom a = r -> a
+;;In this case we have
+;;fmap :: (a -> b) -> (r -> a) -> (r -> b)
+;;Which can be implemented as follows, g: r->a, f: a->b =>
+;;instance Functor ((->) r) where
+;;    fmap f g = f . g
+;;We could also just write
+;;instance Functor ((->) r) where
+;;    fmap = (.)
+(: reader (All (a) (-> r a)))
+(define (->r a)
+  (-> r a))
+(: reader-map (All (a b) (-> (-> a b) (-> (-> r a) (-> r b)))))
+(define (->r a->b)
+  (-> (-> r a) (-> r b)))
